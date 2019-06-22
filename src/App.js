@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './Calendar/Calendar'
 
+class App extends Component {
 
-function App() {
-  return (
+
+render() {
+	return (
     <div className="App">
     </div>
   );
+}
 }
 
 export default App;

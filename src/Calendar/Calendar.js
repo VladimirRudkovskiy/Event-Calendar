@@ -123,7 +123,7 @@ export default class Calendar extends React.Component {
 	}
 
 	handleAdd = () => {
-		const monthEvents = tyhis.state.selectedMonthEvents;
+		const monthEvents = this.state.selectedMonthEvents;
 		const currentSelectedDate = this.state.selectedDay;
 
 		let newEvents = [];
@@ -140,7 +140,7 @@ export default class Calendar extends React.Component {
 			default:
 				var newEvent = {
 					title: eventTitle,
-					date: currentSelectedDay,
+					date: currentSelectedDate,
 					dynamic: true
 				};
 
@@ -155,5 +155,181 @@ export default class Calendar extends React.Component {
 				break;
 		}
 	}
+
+	addEvent = () => {
+		const currentSelectedDate = this.state.selectedDay;
+		let isAfterDay = moment().startOf("day").subtract(1, "d");
+
+		if (currentSelectedDate.isAfter(isAfterDay)) {
+			this.handleAdd();
+		} else {
+			if (confirm("Are you sure you want to add an event in the past?")) {
+				this.handleAdd();
+			} else {
+			} //end confirm past
+		} //end is in the past
+	}
 	
+
+	removeEvent = (i) => {
+		const monthEvents = this.state.selectedMonthEvents.slice();
+		const currentSelectedDate = this.state.selectedDay;
+
+		if (confirm("Are you sure you want to remove this event?")) {
+			let index = i;
+
+			if (index != -1) {
+				monthEvents.splice(index, 1);
+			} else {
+				alert("No Events to remove on this day!");
+			}
+
+			this.setState({
+				selectedMonthEvents: monthEvents
+			});
+		}
+	}
+
+	initialiseEvents = () => {
+		const monthEvents = this.state.selectedMonthEvents;
+
+		let allEvents = [];
+
+		var event1 = {
+			title:
+			"Press the Add button and enter a name for your event. P.S you can delete me by pressing me!",
+			date: moment(),
+			dynamic: false
+		};
+
+		var event2 = {
+			title: "Event 2 - Meeting",
+			date: moment().startOf("day").subtract(2, "d").add(2, "h"),
+			dynamic: false
+		};
+
+		var event3 = {
+			title: "Event 3 - Cinema",
+			date: moment().startOf("day").subtract(7, "d").add(18, "h"),
+			dynamic: false
+		};
+
+		var event4 = {
+      title: "Event 4 - Theater",
+      date: moment().startOf("day").subtract(16, "d").add(20, "h"),
+      dynamic: false
+    };
+
+    var event5 = {
+      title: "Event 5 - Drinks",
+      date: moment().startOf("day").subtract(2, "d").add(12, "h"),
+      dynamic: false
+    };
+
+    var event6 = {
+      title: "Event 6 - Diving",
+      date: moment().startOf("day").subtract(2, "d").add(13, "h"),
+      dynamic: false
+    };
+
+    var event7 = {
+      title: "Event 7 - Tennis",
+      date: moment().startOf("day").subtract(2, "d").add(14, "h"),
+      dynamic: false
+    };
+
+    var event8 = {
+      title: "Event 8 - Swimmming",
+      date: moment().startOf("day").subtract(2, "d").add(17, "h"),
+      dynamic: false
+    };
+
+    var event9 = {
+      title: "Event 9 - Chilling",
+      date: moment().startOf("day").subtract(2, "d").add(16, "h"),
+      dynamic: false
+    };
+    
+        var event10 = {
+      title:
+        "Hello World",
+      date: moment().startOf("day").add(5, "h"),
+      dynamic: false
+		};
+		
+		allEvents.push(event1);
+		allEvents.push(event2);
+		allEvents.push(event3);
+		allEvents.push(event4);
+		allEvents.push(event5);
+		allEvents.push(event6);
+		allEvents.push(event7);
+		allEvents.push(event8);
+		allEvents.push(event9);
+		allEvents.push(event10);
+
+		for (var i = 0; i < allEvents.length; i++) {
+			monthEvents.push(allEvents[i]);
+		}
+
+		this.setState({
+			selectedMonthEvents: monthEvents
+		});
+	}
+
+	render() {
+		const currentMonthView = this.state.selectedMonth;
+		const currentSelectedDay = this.state.selectedDay;
+		const showEvents = this.state.showEvents;
+
+		if (showEvents) {
+			return (
+				<section className="main-calendar">
+					<header className="calendar-header">
+						<div className="row title-header">
+							{this.renderDayLabel()}
+						</div>
+						<div className="row button-container">
+							<i
+							className="box arrow fa fa-angle-left"
+							onClick={this.showCalendar}
+							/>
+							<i
+							className="box event-button fa fa-plus-square"
+							onClick={this.addEvent}
+							/>
+						</div>
+					</header>
+					<Events
+						selectedMonth={this.state.selectedMonth}
+						selectedDay={this.state.selectedDay}
+						selectedMonthEvents={this.state.selectedMonthEvents}
+						removeEvent={i => this.removeEvent(i)}
+						/>
+				</section>
+			);
+		} else {
+			return (
+				<section className="main-calendar">
+					<header className="calendar-header">
+						<div className="row title-header">
+							<i
+							className="box arrow fa fa-angle-left"
+							onClick={this.previous}
+							/>
+							<div className="box header-text">
+								{this.renderTodayLabel()}
+								{this.renderMonthLabel()}
+							</div>
+							<i className="box arrow fa fa-angle-right" onClick={this.next} />
+						</div>
+						<DayNames />
+					</header>
+					<div className="days-container">
+						{this.renderWeeks()}
+					</div>
+				</section>
+			);
+		}
+	}
 }
