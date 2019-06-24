@@ -1,6 +1,9 @@
 import React from 'react';
 import './calendar.css'
 import moment from 'moment';
+import Events from './Events'
+import DayNames from './DayNames'
+import Week from './Week'
 
 export default class Calendar extends React.Component {
 	constructor(props) {
