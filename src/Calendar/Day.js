@@ -15,11 +15,10 @@ export default class Day extends React.Component {
 				(day.date.isSame(selected) ? " selected" : "") + 
 				(day.hasEvents ? " has-events" : "")
 			}
-			onclick={() => select(day)}
+			onClick={() => select(day)}
 			>
 				<div className="day-number">{day.number}</div>
 			</div>
 		);
 	}
 }
-ReactDOM.render(<Calendar />, document.getElementById("calendar-content"));

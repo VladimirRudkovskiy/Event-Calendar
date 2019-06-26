@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './Calendar/Calendar'
+import Calendar from './Calendar/Calendar';
 
 class App extends Component {
 
 
 render() {
 	return (
-    <div class="calendar-rectangle">
-			<div id="calendar-content" class="calendar-content"></div>
-    </div>
+    <div className="App">
+			<Calendar />
+		</div>
   );
 }
 }
