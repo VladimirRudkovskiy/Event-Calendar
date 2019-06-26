@@ -30,7 +30,7 @@ export default class Calendar extends React.Component {
 	}
 
 	previous = () => {
-		const currentMonthView = this.getSnapshotBeforeUpdate.selectedMonth;
+		const currentMonthView = this.state.selectedMonth;
 
 		this.setState({
 			selectedMonth: currentMonthView.subtract(1, 'month')
