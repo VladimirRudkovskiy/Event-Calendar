@@ -1,18 +1,19 @@
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
 
 body {
   font-size: 16px;
 }
 
 .calendar-rectangle {
-  width: 100%;
+	width: 100%;
   position: relative;
   margin-left: auto;
   margin-right: auto;
   color: #616161;
   font-size: 1em;
-  font-family: 'Dosis', sans-serif;
   overflow: hidden;
-  box-shadow: 0px 0px 50px #888888;
+	box-shadow: 0px 0px 50px #888888;
   
 }
 
@@ -171,7 +172,8 @@ body {
 
 
     .arrow:hover {
-      background-color: white;
+			background-color: white;
+
       cursor: pointer;
       color: #1e88e5;
       transition: all 0.2s ease-in-out 0s;
@@ -203,14 +205,15 @@ body {
       cursor: default;
       background-color: #90caf9;
       color: #ffffff;
-      transition: background-color 0.2s ease-in-out 0s;
     }
   
 
 
   .today {
-		border: 1px solid red;
+		border: 1px solid rgb(0, 0, 0);
 		font-weight: bold;
+		box-sizing: border-box;
+		border-radius: 50%;
 	}
     .day-number {
 			background-color: #90caf9;
@@ -222,8 +225,8 @@ body {
   .has-events {
 		font-weight: bold;
 	}
-  
 
+	
   .different-month {
     opacity: 0.5;
   }

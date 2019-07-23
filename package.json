@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -30,7 +31,6 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free": "^5.9.0"
   }
 }

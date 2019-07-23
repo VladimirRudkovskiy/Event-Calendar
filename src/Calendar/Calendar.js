@@ -88,8 +88,8 @@ export default class Calendar extends React.Component {
 	renderTodayLabel = () => {
 		const currentSelectedDay = this.state.selectedDay;
 		return(
-			<span className="box todat-label" onClick={this.goToCurrentMonthView}>
-			Today
+			<span className="box arrow fa fa-calendar" onClick={this.goToCurrentMonthView}>
+			
 			</span>
 		);
 	}
@@ -228,11 +228,11 @@ export default class Calendar extends React.Component {
               <i
                 className="box arrow fa fa-angle-left"
                 onClick={this.showCalendar}
-              >-</i>
+              ></i>
               <i
                 className="box event-button fa fa-plus-square"
                 onClick={this.addEvent}
-              >+</i>
+              ></i>
             </div>
           </header>
           <Events
@@ -253,7 +253,7 @@ export default class Calendar extends React.Component {
               {this.renderTodayLabel()}
               {this.renderMonthLabel()}
               </div>
-              <i className="box arrow fa fa-angle-right" onClick={this.next}>></i>
+              <i className="box arrow fa fa-angle-right" onClick={this.next}></i>
             </div>
             <DayNames />
           </header>
